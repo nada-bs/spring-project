@@ -3,15 +3,17 @@ package tn.esprit.arctic.esprit.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sponsor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSponsor;
 
     private String nom;
@@ -22,6 +24,13 @@ public class Sponsor {
 
     private Boolean bloquerContrat;
 
-    @OneToMany(mappedBy = "sponsor")
+    Boolean archived;
+
+    LocalDate dateCreation;
+
+    LocalDate dateDerniereModification;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="Sponsor")
     private List<Contrat> contrats;
 }
+
