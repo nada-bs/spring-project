@@ -1,11 +1,16 @@
 package tn.esprit.arctic.esprit.Services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit.arctic.esprit.Ripository.SponsorRipository;
 import tn.esprit.arctic.esprit.entities.Sponsor;
 import java.util.List;
 
-public class SponsorService implements ISponsorService{
-    SponsorRipository sp;
+@Service
+public class SponsorService implements ISponsorService {
+
+    @Autowired
+    private SponsorRipository sp;
 
     @Override
     public Sponsor ajouterSponsor(Sponsor sponsor) {
