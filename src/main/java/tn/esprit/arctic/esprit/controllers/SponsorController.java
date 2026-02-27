@@ -7,44 +7,44 @@ import tn.esprit.arctic.esprit.entities.Sponsor;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sponsors")
+@RequestMapping("/api/sponsors")
 public class SponsorController {
 
     @Autowired
     private ISponsorService sponsorService;
 
-    @PostMapping
+    @PostMapping("/add")
     public Sponsor ajouterSponsor(@RequestBody Sponsor sponsor) {
         return sponsorService.ajouterSponsor(sponsor);
     }
 
-    @PostMapping("/all")
+    @PostMapping("/addAll")
     public List<Sponsor> ajouterSponsors(@RequestBody List<Sponsor> sponsors) {
         return sponsorService.ajouterSponsors(sponsors);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public Sponsor modifierSponsor(@RequestBody Sponsor sponsor) {
         return sponsorService.modifierSponsor(sponsor);
     }
 
-    @DeleteMapping("/{id}")
-    public void supprimerSponsor(@PathVariable Long id) {
-        sponsorService.supprimerSponsor(id);
+    @DeleteMapping("/delete/{idSponsor}")
+    public void supprimerSponsor(@PathVariable Long idSponsor) {
+        sponsorService.supprimerSponsor(idSponsor);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Sponsor> listSponsors() {
         return sponsorService.listSponsors();
     }
 
-    @GetMapping("/{id}")
-    public Sponsor recupererSponsor(@PathVariable Long id) {
-        return sponsorService.recupererSponsor(id);
+    @GetMapping("/get/{idSponsor}")
+    public Sponsor recupererSponsor(@PathVariable Long idSponsor) {
+        return sponsorService.recupererSponsor(idSponsor);
     }
 
-    @PutMapping("/archiver/{id}")
-    public Boolean archiverSponsor(@PathVariable Long id) {
-        return sponsorService.archiverSponsor(id);
+    @PutMapping("/archiver/{idSponsor}")
+    public Boolean archiverSponsor(@PathVariable Long idSponsor) {
+        return sponsorService.archiverSponsor(idSponsor);
     }
 }

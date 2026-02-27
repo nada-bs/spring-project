@@ -19,7 +19,7 @@ public class Pilote {
     private Integer nbrPointsTotal;
 
     private Integer classementGeneral;
-
+    private Categorie categorie;
     @ManyToOne
     private Equipe equipe;
 
