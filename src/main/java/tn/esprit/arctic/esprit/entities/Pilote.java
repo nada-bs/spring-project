@@ -3,26 +3,28 @@ package tn.esprit.arctic.esprit.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pilote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPilote;
 
-    private String libelleP;
+    private String libellep;
 
-    private Integer nbrPointsTotal;
+    private String prenom;
+
+    private Integer nbPointsTotal;
 
     private Integer classementGeneral;
+
+    @Enumerated(EnumType.STRING)
     private Categorie categorie;
+
     @ManyToOne
     private Equipe equipe;
-
-    @OneToMany(mappedBy = "pilote")
-    private List<Position> positions;
 }
